@@ -10,7 +10,7 @@ contract DSTestPlus is DSTest {
         uint256 an = a[0].length;
         uint256 bn = b[0].length;
 
-        if (am != am || an != bn) {
+        if (am != bm || an != bn) {
             emit log("Error: a == b dimensions not satisfied [int256[][]]");
             fail();
         }
