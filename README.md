@@ -2,7 +2,7 @@
 
 A library for matrix operations.
 
-![matrixuwu](matrix.png)
+![matrixuwu](mtrx.png)
 
 ## License
 
