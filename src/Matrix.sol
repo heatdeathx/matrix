@@ -26,9 +26,9 @@ library Matrix {
 
         x = from(n, m);
 
-        for (uint256 i = 0; i < n; i++) {
-            for (uint256 j = 0; j < m; j++) {
-                x[i][j] = a[j][i];
+        for (uint256 i = 0; i < m; i++) {
+            for (uint256 j = 0; j < n; j++) {
+                x[j][i] = a[i][j];
             }
         }
     }

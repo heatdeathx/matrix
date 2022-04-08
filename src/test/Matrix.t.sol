@@ -66,6 +66,19 @@ contract MatrixTest is DSTest, DSTestPlus {
         assertEq(X[1][2], 6);
     }
 
+    function testTSymmetry() public {
+        int256[][] memory A = Matrix.from(3, 2);
+
+        A[0][0] = 1;
+        A[0][1] = 2;
+        A[1][0] = 3;
+        A[1][1] = 4;
+        A[2][0] = 5;
+        A[2][1] = 6;
+
+        assertEq(A.T().T(), A);
+    }
+
     function testFill() public {
         int256[][] memory A = Matrix.fill(3, 4, 69);
 
@@ -179,5 +192,25 @@ contract MatrixTest is DSTest, DSTestPlus {
         assertEq(X[1][0], 3);
         assertEq(X[1][1], 0);
         assertEq(X[1][2], 0);
+    }
+
+    function testExample() public {
+        int256[][] memory A = Matrix.from(2, 4);
+        int256[][] memory B = Matrix.from(4, 2);
+
+        (uint256 m, uint256 n) = A.shape();
+
+        int256 count = 1;
+
+        for (uint256 i = 0; i < m; i++) {
+            for (uint256 j = 0; j < n; j++) {
+                A[i][j] += count++;
+            }
+        }
+
+        B = A.T();
+        B = B.mul(2);
+
+        assertEq(A.T().mul(2), B);
     }
 }
