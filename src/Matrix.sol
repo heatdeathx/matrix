@@ -16,6 +16,23 @@ library Matrix {
         return (a.length, a[0].length);
     }
 
+    function size(int256[][] memory a) internal pure returns (uint256 s) {
+        (uint256 m, uint256 n) = a.shape();
+        s = m * n;
+    }
+
+    function T(int256[][] memory a) internal pure returns (int256[][] memory x) {
+        (uint256 m, uint256 n) = a.shape();
+
+        x = from(n, m);
+
+        for (uint256 i = 0; i < n; i++) {
+            for (uint256 j = 0; j < m; j++) {
+                x[i][j] = a[j][i];
+            }
+        }
+    }
+
     function fill(uint256 m, uint256 n, int256 value) internal pure returns (int256[][] memory x) {
         x = from(m, n);
 

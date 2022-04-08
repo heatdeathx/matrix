@@ -40,6 +40,32 @@ contract MatrixTest is DSTest, DSTestPlus {
         assertEq(n, 4);
     }
 
+    function testSize() public {
+        int256[][] memory A = Matrix.from(3, 4);
+
+        assertEq(A.size(), 3 * 4);
+    }
+
+    function testT() public {
+        int256[][] memory A = Matrix.from(3, 2);
+
+        A[0][0] = 1;
+        A[0][1] = 2;
+        A[1][0] = 3;
+        A[1][1] = 4;
+        A[2][0] = 5;
+        A[2][1] = 6;
+
+        int256[][] memory X = A.T();
+
+        assertEq(X[0][0], 1);
+        assertEq(X[0][1], 3);
+        assertEq(X[0][2], 5);
+        assertEq(X[1][0], 2);
+        assertEq(X[1][1], 4);
+        assertEq(X[1][2], 6);
+    }
+
     function testFill() public {
         int256[][] memory A = Matrix.fill(3, 4, 69);
 
