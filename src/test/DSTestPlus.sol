@@ -20,7 +20,6 @@ contract DSTestPlus is DSTest {
                 if (a[i][j] != b[i][j]) {
                     emit log("Error: a == b entries not satisfied [int256[][]]");
                     fail();
-                    revert();
                 }
             }
         }
